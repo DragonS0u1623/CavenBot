@@ -1,6 +1,8 @@
 /.vscode
+Website/
 .gradle
 build
+logs
 bin
 *.ppk
 *.pem

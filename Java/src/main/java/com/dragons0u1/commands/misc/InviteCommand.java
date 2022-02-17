@@ -11,7 +11,7 @@ import me.duncte123.botcommons.messaging.*;
 import net.dv8tion.jda.api.*;
 
 public class InviteCommand extends Command {
-	String invite = "https://discord.com/api/oauth2/authorize?client_id=638446270469373972&permissions=1043590262&scope=bot";
+	String invite = "https://discord.com/api/oauth2/authorize?client_id=638446270469373972&permissions=1636151717110&scope=bot%20applications.commands";
 
 	// @Override
 	// public void execute(SlashCommandContext ctx) {
