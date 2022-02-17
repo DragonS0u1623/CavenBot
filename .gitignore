@@ -1,0 +1,8 @@
+/.vscode
+.gradle
+build
+*.ppk
+*.pem
+*.csv
+*.env
+node_modules

@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+task stage(dependsOn: ['build', 'clean']) {
+	doLast {
+		delete fileTree(dir: "build", exclude: "libs")
+		delete fileTree(dir: "build/libs", exclude: "*.jar")
+	}
+}
+build.mustRunAfter clean
+
+mainClassName = 'com.dragons0u1.Main'
+
+version = '3.1.0'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven {
+        name 'duncte123-jfrog'
+        url 'https://duncte123.jfrog.io/artifactory/maven'
+    }
+    maven { url "https://m2.chew.pro/snapshots" }
+}
+
+dependencies {
+    implementation 'io.github.cdimascio:dotenv-java:2.2.3'
+    implementation 'org.mongodb:mongodb-driver-sync:4.4.2'
+    implementation('net.dv8tion:JDA:5.0.0-alpha.5') {
+        exclude module: 'opus-java'
+    }
+    implementation group: 'me.duncte123', name: 'botCommons', version: '2.3.9'
+    implementation 'pw.chew:jda-chewtils-command:2.0-SNAPSHOT'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'club.minnced:discord-webhooks:0.7.5'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.1'
+}
+
+compileJava.options.encoding = 'UTF-8'

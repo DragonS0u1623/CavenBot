@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-tesseract": "^0.3.0"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.5.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0",
+    "erela.js": "^2.3.3",
+    "glob": "^7.1.7",
+    "module-alias": "^2.2.2",
+    "mongoose": "^5.13.5",
+    "path": "^0.12.7",
+    "util": "^0.12.4"
+  },
+  "_moduleAliases": {
+    "@lang": "Node/resources/languages",
+    "@models": "Node/models",
+    "@resources": "Node/resources",
+    "@structures": "Node/structures",
+    "@utils": "Node/utils"
+  }
+}

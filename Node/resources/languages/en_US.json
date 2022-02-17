@@ -1,0 +1,68 @@
+{
+  "general": {
+    "language": {
+      "guild_message": "Guild language set to %s",
+      "no_args": "Please provide a valid language for the bot to use",
+      "user_message": "%s language set to %s"
+    },
+    "role_add": {
+      "message": "Added role: %s in %s"
+    },
+    "role_remove": {
+      "message": "Removed role: %s in %s"
+    }
+  },
+  "commands": {
+    "errors": {
+      "anon": {
+        "blacklisted": "That channel you requested was blacklisted. Please try another channel",
+        "not_member": "You have to be a member of the guild to send messages there",
+        "no_vent": "You have the No Vent role which prohibits you from using this command. Talk to an admin about getting it removed"
+      },
+      "missing_permission": "I don't have permission to do that\n\n**Needed Perms**\n%s",
+      "music": {
+        "different_vc": "You need to be in the same Voice Channel to use this command.",
+        "no_player": "There is no player for this guild."
+      },
+      "no_permission": "You don't have permission to use this command",
+      "no_user": "The user ID doesn't give a user. Please make sure it's correct",
+      "roles": {
+        "no_args": "Please enter more arguments",
+        "no_join_role": "Please mention a role for this command"
+      }
+    },
+    "misc": {
+      "reminder": {
+        "add": "Reminder added for %s",
+        "no_args": "I can't remind you to do nothing",
+        "no_reminders": "Lucky you. You don't have any reminders",
+        "remove": "Removed reminder: %s for %s",
+        "remove_no_args": "I can't remove a reminder without a number",
+        "view": "Reminders for %s"
+      }
+    },
+    "music": {
+      "join": "",
+      "leave": "",
+      "now_playing": "",
+      "play": "",
+      "queue": "",
+      "repeat": "",
+      "resume": "",
+      "skip": "",
+      "stop": ""
+    },
+    "roles": {
+      "add_dm": "Added role: %s in %s",
+      "add_message": "Reaction added",
+      "dm_disable": "Role DM settings for the server disabled",
+      "dm_enable": "Role DM settings for the server enabled",
+      "join_role_disable": "Join role disabled for the server",
+      "join_role_enable": "Join role %s set for the server :warning:**Note: Only one role can be set for the server**",
+      "remove_dm": "Removed role: %s in %s",
+      "remove_message": "Reaction removed",
+      "toggle_disable": "%d roles updated to disable toggle",
+      "toggle_enable": "%d roles updated to enable toggle"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "extends": "tesseract",
+    "rules": {
+        "semi":"off",
+        "indent":["error","tab"],
+        "no-empty-function":"off",
+        "no-trailing-spaces":"off",
+        "curly":"off",
+        "id-length":"off",
+        "new-cap":"off",
+        "prefer-const":"off",
+        "consistent-return":"off",
+        "eol-last":"off",
+        "padded-blocks": "off",
+        "no-process-env": "off"
+    }
+}
