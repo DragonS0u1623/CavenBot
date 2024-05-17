@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js'
-import prisma from '../../../utils/prisma'
+import prisma from '../../../utils/prisma.js'
 
 export default {
 	data: new SlashCommandBuilder().setName('reminder').setDescription('Parent command for reminders')

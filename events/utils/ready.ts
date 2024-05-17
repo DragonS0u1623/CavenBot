@@ -1,5 +1,5 @@
 import { Client, Events } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 
 export default {
     name: Events.ClientReady,

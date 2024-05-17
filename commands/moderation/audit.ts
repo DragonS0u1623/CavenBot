@@ -1,5 +1,5 @@
 import { ChannelType, ChatInputCommandInteraction, InteractionEditReplyOptions, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js'
-import prisma from '../../utils/prisma'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('audit').setDescription('Sets the channel to send audit log data').setDMPermission(false)

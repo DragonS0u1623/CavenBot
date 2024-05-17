@@ -1,6 +1,6 @@
-import { ChatInputCommandInteraction, PermissionFlagsBits, Colors, EmbedBuilder, SlashCommandBuilder, User, Guild, ChannelType, InteractionEditReplyOptions } from 'discord.js'
-import prisma from '../../utils/prisma'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { ChatInputCommandInteraction, PermissionFlagsBits, Colors, EmbedBuilder, SlashCommandBuilder, Guild, ChannelType, InteractionEditReplyOptions } from 'discord.js'
+import prisma from '../../utils/prisma.js'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 export default {
     data: new SlashCommandBuilder().setName('kick').setDescription('Kicks the user from the server')
@@ -13,7 +13,7 @@ export default {
         
         const guild = interaction.guild as Guild
         const { member } = interaction
-        let { id } = interaction.options.getUser('target') as User
+        let { id } = interaction.options.getUser('target', true)
         const reason = interaction.options.getString('reason') || 'No reason given'
 
         const kick = await guild.members.fetch(id)

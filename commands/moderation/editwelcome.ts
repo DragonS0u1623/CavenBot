@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, Guild } from 'discord.js'
-import prisma from '../../utils/prisma'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('editwelcome').setDescription('Edits the message of the welcome embeds')

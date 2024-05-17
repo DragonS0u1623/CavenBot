@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 const gif1 = 'https://cdn.discordapp.com/attachments/640674672618373132/647205970442846220/20191121_172359.jpg'
 const gif2 = 'https://cdn.discordapp.com/attachments/640674672618373132/711291888594059354/tenor-4.gif'

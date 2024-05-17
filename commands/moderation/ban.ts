@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Guild, Interaction, InteractionEditReplyOptions, PermissionFlagsBits, SlashCommandBuilder, User } from 'discord.js'
+import { ChatInputCommandInteraction, Guild, InteractionEditReplyOptions, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js'
 
 export default {
     data: new SlashCommandBuilder().setName('ban').setDescription('Bans a user from the server').setDMPermission(false)
@@ -8,7 +8,7 @@ export default {
     async execute(interaction: ChatInputCommandInteraction) {
         await interaction.deferReply()
 
-        const user = interaction.options.getUser('user') as User
+        const user = interaction.options.getUser('user', true)
         const reason = interaction.options.getString('reason') || 'No reason provided'
 
         if (!interaction.memberPermissions?.has(PermissionFlagsBits.BanMembers))

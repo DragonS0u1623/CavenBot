@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMember, InteractionEditReplyOptions, SlashCommandBuilder, VoiceChannel } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 import { SearchPlatform, SearchResult, UnresolvedSearchResult } from 'lavalink-client/dist/types'
 
 export default {

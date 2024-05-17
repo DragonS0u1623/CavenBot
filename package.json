@@ -2,11 +2,10 @@
   "name": "cavenbot",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node index.js",
-    "updatecommands": "tsc && node ./scripts/updateCommands.js"
+    "start": "node index.js",
+    "updatecommands": "node ./scripts/updateCommands.js"
   },
   "author": "DragonS0u1623 (TeddyBearInc)",
   "license": "ISC",
@@ -21,7 +20,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
-    "@types/ffmpeg": "^1.0.7",
     "dotenv": "^16.4.5",
     "eslint": "^9.2.0",
     "prisma": "^5.13.0",

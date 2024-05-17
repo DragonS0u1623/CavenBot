@@ -24,7 +24,7 @@ plugins:
       youtube: true
     spotify:
       clientId: "3c03861900024f06bbb4d4d8d12d9555"
-      clientSecret: ""
+      clientSecret: "753dd72db0a94b638113901d9a451adb"
       spDc: "AQDbk3nOmMCiEnGfFq_buFnrkTmlNOuLIBePhWUbulrOnawdDRj-duREhWkqsqh1ie0Mi9i5FXJjP_FobUsKL_CxUBsnXpM9BuWA-DJ-LHnDtwyq2rT9sP3nO7Bg1iou13emtz_wDISIX--0LxBE70vzRqxgdmShe2kelmqBTslyhQo-_KDbs_UmQVp8x3xufTLvP6zNSF7y0DfmbR35P6zPPkI-"
       countryCode: "US"
       playlistLoadLimit: 10

@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMember, SlashCommandBuilder } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 
 export default {
     data: new SlashCommandBuilder().setName('stop').setDescription('Stops the current song and clears the queue').setDMPermission(false),

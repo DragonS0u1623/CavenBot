@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Colors } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 const gif = `https://cdn.discordapp.com/attachments/716088303622946846/746103226008600657/muffin_button.gif`
 

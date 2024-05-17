@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, InteractionEditReplyOptions, SlashCommandBuilder } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 import { RepeatMode } from 'lavalink-client/dist/types'
 
 export default {

@@ -1,7 +1,7 @@
-import { ChatInputCommandInteraction, Colors, EmbedBuilder, GuildMember, SlashCommandBuilder } from 'discord.js'
-import { CavenBot } from '../../types/types'
-import { findEmoji } from '../../utils/utils'
-import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics'
+import { ChatInputCommandInteraction, Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import { CavenBot } from '../../types/types.js'
+import { findEmoji } from '../../utils/utils.js'
+import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics.js'
 
 export default {
     data: new SlashCommandBuilder().setName('nowplaying').setDescription('Shows the currently playing song').setDMPermission(false),

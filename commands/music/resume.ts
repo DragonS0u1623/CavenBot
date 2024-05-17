@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, InteractionEditReplyOptions, SlashCommandBuilder } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 
 export default {
     data: new SlashCommandBuilder().setName('resume').setDescription('Resumes the current song').setDMPermission(false),

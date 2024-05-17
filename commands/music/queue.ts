@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, Colors, EmbedBuilder, InteractionEditReplyOptions, SlashCommandBuilder } from 'discord.js'
-import { CavenBot } from '../../types/types'
-import { findEmoji } from '../../utils/utils'
-import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics'
+import { CavenBot } from '../../types/types.js'
+import { findEmoji } from '../../utils/utils.js'
+import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics.js'
 
 export default {
     data: new SlashCommandBuilder().setName('queue').setDescription('Shows the current queue or removes a song from the queue').setDMPermission(false)

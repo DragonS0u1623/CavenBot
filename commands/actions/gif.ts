@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Colors } from 'discord.js'
 import axios from 'axios'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 export default {
     data: new SlashCommandBuilder().setName('beg')
@@ -17,7 +17,7 @@ export default {
             const json = response.data.results[0].media[0].gif
 
             const embed = new EmbedBuilder()
-                .setTitle(`${interaction.user} gives a gif to everyone`)
+                .setTitle(`${interaction.user.displayName} gives a gif to everyone`)
                 .setDescription(`[Link to image](${json.url})`)
                 .setImage(json.url)
                 .setColor(Colors.NotQuiteBlack)

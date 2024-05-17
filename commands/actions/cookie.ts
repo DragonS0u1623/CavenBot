@@ -9,7 +9,7 @@ export default {
         .addUserOption(option => option.setName('target').setDescription('The person you want to give a cookie').setRequired(false)),
     async execute(interaction: ChatInputCommandInteraction) {
         const embed = new EmbedBuilder()
-            .setTitle(`${interaction.user} gives a cookie to everyone`)
+            .setTitle(`${interaction.user.displayName} gives a cookie to everyone`)
             .setDescription(`[Link to image](${cookie})`)
             .setImage(cookie)
             .setColor(Colors.NotQuiteBlack)
@@ -17,7 +17,7 @@ export default {
             .setFooter({ text: FOOTER, iconURL: OWNERPFP })
 
         const user = interaction.options.getUser('target')
-        if (user != null) embed.setTitle(`${interaction.user} gives a cookie to ${user}`)
+        if (user != null) embed.setTitle(`${interaction.user.displayName} gives a cookie to ${user.displayName}`)
         await interaction.editReply({ embeds: [embed] })
     }
 }

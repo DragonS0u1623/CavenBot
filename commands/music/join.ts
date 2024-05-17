@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMember, InteractionEditReplyOptions, SlashCommandBuilder, VoiceChannel } from 'discord.js'
-import { CavenBot } from '../../types/types'
+import { CavenBot } from '../../types/types.js'
 
 export default {
     data: new SlashCommandBuilder().setName('join').setDescription('Joins the voice channel').setDMPermission(false),

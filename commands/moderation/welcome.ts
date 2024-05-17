@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder, Guild, ChannelType } from 'discord.js'
-import prisma from '../../utils/prisma'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('welcome').setDescription('Sets the channel to send welcome messages')

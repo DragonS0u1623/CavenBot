@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false
+    },
+    "include": ["./"],
+    "exclude": ["/node_modules", "/lavalink"],
+    "watchOptions": {
+        "excludeDirectories": ["/node_modules", "/lavalink"]
+    }
+}

@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 export default {
 	data: new SlashCommandBuilder().setName('support').setDescription('Sends an embed with the invite link to the official support server'),

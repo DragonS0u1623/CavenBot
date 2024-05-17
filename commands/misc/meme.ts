@@ -1,6 +1,6 @@
 import { Colors, EmbedBuilder, ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import axios from 'axios'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 const url = 'https://meme-api.herokuapp.com/gimme'
 

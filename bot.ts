@@ -1,8 +1,8 @@
-import { ChannelType, Client, GatewayIntentBits, Partials, TextChannel } from 'discord.js'
-import * as utils from './utils/utils'
-import { CavenBot } from './types/types'
-import { LavalinkManager } from 'lavalink-client/dist/types'
-import { BOTID } from './utils/statics'
+import { Client, GatewayIntentBits, Partials, TextChannel } from 'discord.js'
+import * as utils from './utils/utils.js'
+import { CavenBot } from './types/types.js'
+import { BOTID } from './utils/statics.js'
+import { LavalinkManager } from 'lavalink-client'
 
 const intents = [
     GatewayIntentBits.DirectMessages,
@@ -59,7 +59,7 @@ client.on('raw', data => client.lavalink.sendRawData(data))
 client.lavalink.on('trackStart', (player, track) => {
     const channel = client.guilds.cache.find(guild => guild.id === player.guildId)?.channels.cache.find(channel => channel.id === player.textChannelId) as TextChannel
 
-    channel.send(`Now playing: ${track.info.title}`)
+    channel.send(`Now playing: ${track.info.title} by ${track.info.author}`)
 })
 
 client.lavalink.on('trackEnd', (player, track, reason) => {

@@ -1,6 +1,6 @@
-import { Colors, EmbedBuilder, Message, ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
+import { Colors, EmbedBuilder, ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import axios from 'axios'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 const apiKeys = [process.env.THESAURUS_KEY, process.env.DICTIONARY_KEY]
 

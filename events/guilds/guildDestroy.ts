@@ -1,7 +1,7 @@
 import { Events, Guild } from 'discord.js'
 import axios from 'axios'
-import { BOTID } from '../../utils/statics'
-import prisma from '../../utils/prisma'
+import { BOTID } from '../../utils/statics.js'
+import prisma from '../../utils/prisma.js'
 
 export default {
 	name: Events.GuildDelete,

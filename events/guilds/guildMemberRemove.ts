@@ -1,6 +1,6 @@
 import { ChannelType, Colors, EmbedBuilder, Events, GuildMember } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
-import prisma from '../../utils/prisma'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
+import prisma from '../../utils/prisma.js'
 
 export default {
     name: Events.GuildMemberRemove,

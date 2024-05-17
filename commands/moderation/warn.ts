@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, TextChannel, GuildMember, EmbedBuilder, Guild, ChannelType } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
-import prisma from '../../utils/prisma'
+import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, GuildMember, EmbedBuilder, Guild, ChannelType } from 'discord.js'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('warn').setDescription('Warns the user with the given reason')

@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
-import { FOOTER, OWNERPFP } from '../../utils/statics'
+import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 
 export default {
     data: new SlashCommandBuilder().setName('pfp').setDescription('Sends the user\'s pfp')

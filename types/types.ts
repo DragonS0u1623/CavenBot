@@ -1,5 +1,5 @@
 import { Client, Collection, CommandInteraction, Events, SlashCommandBuilder } from 'discord.js'
-import { LavalinkManager } from 'lavalink-client/dist/types'
+import { LavalinkManager } from 'lavalink-client'
 
 export interface CavenBot extends Client {
     lavalink: LavalinkManager

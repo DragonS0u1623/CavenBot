@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, User, GuildBan, Guild } from 'discord.js'
+import { SlashCommandBuilder, ChatInputCommandInteraction, PermissionFlagsBits, GuildBan, Guild } from 'discord.js'
 
 export default {
     data: new SlashCommandBuilder().setName('unban').setDescription('Unbans the user from the server. Uses the user ID')

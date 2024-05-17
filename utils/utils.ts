@@ -1,10 +1,8 @@
-import { CavenBot, isCommand, isEvent } from '../types/types'
-import { BOTID } from '../utils/statics'
+import { CavenBot, isCommand, isEvent } from './../types/types.js'
+import { BOTID } from './../utils/statics.js'
 import path from 'path'
 import { readdirSync } from 'fs'
 import { Client, REST, Routes } from 'discord.js'
-
-const __dirname = import.meta.dirname
 
 export async function loadCommands(client: CavenBot) {
     const commandFolders = path.join(__dirname, '../commands')
@@ -14,7 +12,7 @@ export async function loadCommands(client: CavenBot) {
         const commandFiles = readdirSync(path.join(commandFolders, folder)).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            const command = await import(path.join(commandFolders, folder, file))
+            const command = require(path.join(commandFolders, folder, file))
 
             if (!isCommand(command)) throw new TypeError(`Command ${command} is not a command object.`)
 
@@ -45,7 +43,7 @@ export async function loadEvents(client: CavenBot) {
         const eventFiles = readdirSync(path.join(eventFolders, folder)).filter(file => file.endsWith('.js'))
 
         for (const file of eventFiles) {
-            const event = await import(path.join(eventFolders, folder, file))
+            const event = require(path.join(eventFolders, folder, file))
 
             if (!isEvent(event)) throw new TypeError(`Event ${event} is not an event object.`)
 

@@ -1,4 +1,4 @@
-import { updateRegisteredCommands } from "../utils/utils"
+import { updateRegisteredCommands } from "./../utils/utils.js"
 
 updateRegisteredCommands().then( () => {
     console.log("Commands updated")
