@@ -6,10 +6,9 @@ export default {
     async execute(interaction: ChatInputCommandInteraction) {
         await interaction.deferReply()
         
-        const client = interaction.client as CavenBot
         const guildId = interaction.guildId as string
 
-        const player = client.lavalink.getPlayer(guildId)
+        const player = (interaction.client as CavenBot).lavalink.getPlayer(guildId)
 
         if (!player) return interaction.editReply({ content: 'I am not connected to a voice channel.', ephemeral: true } as InteractionEditReplyOptions)
 

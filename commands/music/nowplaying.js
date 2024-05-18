@@ -1,4 +1,4 @@
-const { Colors, EmbedBuilder, SlashCommandBuilder } = require('discord.js')
+const { Colors, EmbedBuilder, SlashCommandBuilder, Emoji } = require('discord.js')
 const { findEmoji } = require('../../utils/utils')
 const { FOOTER, NPEMOTE, OWNERPFP } = require('../../utils/statics')
 
@@ -22,7 +22,7 @@ module.exports = {
                 return emojiArray.find(emoji => emoji)
             })
 
-        const embed = new EmbedBuilder().setTitle(`${npEmote} Now Playing ${npEmote}`).setDescription(`[${track.info.title}](${track.info.uri})`)
+        const embed = new EmbedBuilder().setTitle(`<${npEmote.identifier}> Now Playing <${npEmote.identifier}>`).setDescription(`[${track.info.title}](${track.info.uri})`)
             .setThumbnail(track.info.artworkUrl).setColor(Colors.LuminousVividPink)
             .addFields({ name: 'Author', value: track.info.author, inline: true }, { name: 'Requester', value: `${track.requester}`, inline: true })
             .setFooter({ text: FOOTER, iconURL: OWNERPFP }).setTimestamp()

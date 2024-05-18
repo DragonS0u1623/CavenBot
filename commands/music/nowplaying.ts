@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Colors, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import { ChatInputCommandInteraction, Colors, EmbedBuilder, Emoji, SlashCommandBuilder } from 'discord.js'
 import { CavenBot } from '../../types/types.js'
 import { findEmoji } from '../../utils/utils.js'
 import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics.js'
@@ -19,11 +19,12 @@ export default {
         if (!track) return interaction.editReply('There is nothing playing.')
 
         const npEmote = await client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
-            .then(emojiArray => {
+            .then((emojiArray: Emoji[]) => {
                 return emojiArray.find(emoji => emoji)
             })
 
-        const embed = new EmbedBuilder().setTitle(`${npEmote} Now Playing ${npEmote}`).setDescription(`[${track.info.title}](${track.info.uri})`)
+
+        const embed = new EmbedBuilder().setTitle(`<${npEmote.identifier}> Now Playing <${npEmote.identifier}>`).setDescription(`[${track.info.title}](${track.info.uri})`)
             .setThumbnail(track.info.artworkUrl).setColor(Colors.LuminousVividPink)
             .addFields({ name: 'Author', value: track.info.author, inline: true }, { name: 'Requester', value: `${track.requester}`, inline: true })
             .setFooter({ text: FOOTER, iconURL: OWNERPFP }).setTimestamp()

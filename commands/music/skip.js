@@ -7,7 +7,7 @@ module.exports = {
         
         const guildId = interaction.guildId
 
-        const player = client.lavalink.getPlayer(guildId)
+        const player = interaction.client.lavalink.getPlayer(guildId)
 
         if (!player || !player.connected()) return interaction.editReply({ content: 'I am not connected to a voice channel.', ephemeral: true })
 
