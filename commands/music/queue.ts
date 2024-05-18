@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Colors, EmbedBuilder, InteractionEditReplyOptions, SlashCommandBuilder } from 'discord.js'
+import { ChatInputCommandInteraction, Colors, EmbedBuilder, Emoji, InteractionEditReplyOptions, SlashCommandBuilder } from 'discord.js'
 import { CavenBot } from '../../types/types.js'
 import { findEmoji } from '../../utils/utils.js'
 import { FOOTER, NPEMOTE, OWNERPFP } from '../../utils/statics.js'
@@ -28,11 +28,11 @@ export default {
                     return interaction.editReply('The queue is empty')
 
                 const npEmote = await client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
-                    .then(emojiArray => {
+                    .then((emojiArray: Emoji[]) => {
                         return emojiArray.find(emoji => emoji)
                     })
 
-                const embed = new EmbedBuilder().setTitle(`${npEmote} Queue ${npEmote}`)
+                const embed = new EmbedBuilder().setTitle(`<${npEmote.identifier}> Queue <${npEmote.identifier}>`)
                     .setTimestamp()
                     .setFooter({ text: FOOTER, iconURL: OWNERPFP })
                     .setColor(Colors.Blurple)
@@ -46,16 +46,11 @@ export default {
             }
             case 'remove': {
                 const index = interaction.options.getInteger('index', true)
+
                 if (index < 1 || index > player.queue.tracks.length)
                     return interaction.editReply({ content: 'Invalid index. The index must be a number between 1 and the length of the queue', ephemeral: true } as InteractionEditReplyOptions)
 
-                for (let i = index-1; i < player.queue.tracks.length - 1; i++) {
-                    if (i === player.queue.tracks.length - 1) {
-                        player.queue.tracks.pop()
-                        break
-                    }
-                    player.queue.tracks[i] = player.queue.tracks[i + 1]
-                }
+                player.queue.splice(index - 1, 1)
 
                 await interaction.editReply(`Removed song at index ${index}`)
                 break

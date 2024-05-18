@@ -31,7 +31,7 @@ module.exports = {
                         return emojiArray.find(emoji => emoji)
                     })
 
-                const embed = new EmbedBuilder().setTitle(`${npEmote} Queue ${npEmote}`)
+                const embed = new EmbedBuilder().setTitle(`<${npEmote.identifier}> Queue <${npEmote.identifier}>`)
                     .setTimestamp()
                     .setFooter({ text: FOOTER, iconURL: OWNERPFP })
                     .setColor(Colors.Blurple)
@@ -48,13 +48,7 @@ module.exports = {
                 if (index < 1 || index > player.queue.tracks.length)
                     return interaction.editReply({ content: 'Invalid index. The index must be a number between 1 and the length of the queue', ephemeral: true })
 
-                for (let i = index-1; i < player.queue.tracks.length - 1; i++) {
-                    if (i === player.queue.tracks.length - 1) {
-                        player.queue.tracks.pop()
-                        break
-                    }
-                    player.queue.tracks[i] = player.queue.tracks[i + 1]
-                }
+                player.queue.splice(index - 1, 1)
 
                 await interaction.editReply(`Removed song at index ${index}`)
                 break
