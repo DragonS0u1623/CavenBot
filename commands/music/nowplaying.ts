@@ -18,7 +18,7 @@ export default {
         const track = player.queue.current
         if (!track) return interaction.editReply('There is nothing playing.')
 
-        const npEmote = client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
+        const npEmote = await client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
             .then(emojiArray => {
                 return emojiArray.find(emoji => emoji)
             })

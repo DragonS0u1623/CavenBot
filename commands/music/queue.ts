@@ -24,12 +24,10 @@ export default {
 
         switch (subcommand) {
             case 'show': {
-                if (player.queue.tracks.length === 0) {
-                    await interaction.editReply('The queue is empty')
-                    return
-                }
+                if (player.queue.tracks.length === 0)
+                    return interaction.editReply('The queue is empty')
 
-                const npEmote = client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
+                const npEmote = await client.shard?.broadcastEval(findEmoji, { context: { nameOrId: NPEMOTE }})
                     .then(emojiArray => {
                         return emojiArray.find(emoji => emoji)
                     })
@@ -47,11 +45,9 @@ export default {
                 break
             }
             case 'remove': {
-                const index = interaction.options.getInteger('index') as number
-                if (index < 1 || index > player.queue.tracks.length) {
-                    await interaction.editReply({ content: 'Invalid index. The index must be a number between 1 and the length of the queue', ephemeral: true } as InteractionEditReplyOptions)
-                    return
-                }
+                const index = interaction.options.getInteger('index', true)
+                if (index < 1 || index > player.queue.tracks.length)
+                    return interaction.editReply({ content: 'Invalid index. The index must be a number between 1 and the length of the queue', ephemeral: true } as InteractionEditReplyOptions)
 
                 for (let i = index-1; i < player.queue.tracks.length - 1; i++) {
                     if (i === player.queue.tracks.length - 1) {
