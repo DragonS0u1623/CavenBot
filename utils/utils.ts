@@ -1,5 +1,5 @@
 import { CavenBot, isCommand, isEvent } from './../types/types.js'
-import { BOTID } from './../utils/statics.js'
+import { BOTID, HOMESERVERID } from './../utils/statics.js'
 import path from 'path'
 import { readdirSync } from 'fs'
 import { Client, REST, Routes } from 'discord.js'
@@ -28,6 +28,21 @@ export async function updateRegisteredCommands(client: CavenBot) {
     try {
         await rest.put(
             Routes.applicationCommands(BOTID),
+            { body: commands }
+        )
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function updateRegisteredTestCommands(client: CavenBot) {
+    const rest = new REST().setToken(process.env.TOKEN || '')
+    const rebuildDB = require('../commands/utils/rebuildDB')
+    const commands = [rebuildDB.data.toJSON()]
+
+    try {
+        await rest.put(
+            Routes.applicationGuildCommands(BOTID, HOMESERVERID),
             { body: commands }
         )
     } catch (error) {

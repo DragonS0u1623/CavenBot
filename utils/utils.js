@@ -34,6 +34,21 @@ module.exports.updateRegisteredCommands = async (client) => {
     }
 }
 
+module.exports.updateRegisteredTestCommands = async (client) => {
+    const rest = new REST().setToken(process.env.TOKEN || '')
+    const rebuildDB = require('../commands/utils/rebuildDB')
+    const commands = [rebuildDB.data.toJSON()]
+
+    try {
+        await rest.put(
+            Routes.applicationGuildCommands(BOTID, HOMESERVERID),
+            { body: commands }
+        )
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 module.exports.loadEvents = async (client) => {
     const eventFolders = path.join(__dirname, '../events')
     const folders = readdirSync(eventFolders)
