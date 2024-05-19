@@ -1,4 +1,4 @@
-const { Colors, EmbedBuilder, SlashCommandBuilder, Emoji } = require('discord.js')
+const { Colors, EmbedBuilder, SlashCommandBuilder } = require('discord.js')
 const { findEmoji } = require('../../utils/utils')
 const { FOOTER, NPEMOTE, OWNERPFP } = require('../../utils/statics')
 

@@ -1,7 +1,7 @@
-import { SlashCommandBuilder } from 'discord.js'
-import prisma from '../../utils/prisma'
+const { SlashCommandBuilder } = require('discord.js')
+const prisma = require('../../utils/prisma')
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder().setName('musicsettings').setDescription('Change the music settings for the server').setDMPermission(false)
         .addSubcommand(subcommand => subcommand.setName('requesterNotInVCSkip').setDescription('Toggle whether to skip the song if the requester is not in the voice channel'))
         .addSubcommand(subcommand => subcommand.setName('defaultVolume').setDescription('Set the default volume for the bot')

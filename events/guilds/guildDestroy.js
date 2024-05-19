@@ -1,9 +1,9 @@
-import { Events } from 'discord.js'
-import axios from 'axios'
-import { BOTID } from '../../utils/statics.js'
-import prisma from '../../utils/prisma.js'
+const { Events } = require('discord.js')
+const axios = require('axios')
+const { BOTID } = require('../../utils/statics')
+const prisma = require('../../utils/prisma')
 
-export default {
+module.exports = {
 	name: Events.GuildDelete,
 	once: false,
 	async execute(client, guild) {

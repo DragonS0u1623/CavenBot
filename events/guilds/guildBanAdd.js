@@ -1,6 +1,6 @@
 const { ChannelType, Colors, EmbedBuilder, Events } = require('discord.js')
-const { FOOTER, OWNERPFP } = '../../utils/statics'
-const prisma = '../../utils/prisma'
+const { FOOTER, OWNERPFP } = require('../../utils/statics')
+const prisma = require('../../utils/prisma')
 
 module.exports = {
     name: Events.GuildBanAdd,
