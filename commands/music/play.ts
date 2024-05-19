@@ -1,6 +1,7 @@
 import { ChatInputCommandInteraction, GuildMember, InteractionEditReplyOptions, SlashCommandBuilder, VoiceChannel } from 'discord.js'
 import { CavenBot } from '../../types/types.js'
 import { SearchPlatform, SearchResult, UnresolvedSearchResult } from 'lavalink-client/dist/types'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('play').setDescription('Plays a song with the given search term or URL')
@@ -27,13 +28,17 @@ export default {
         let search = interaction.options.getString('search', true)
         const source = interaction.options.getString('source')
 
+        const volume = await prisma.musicsettings.findUnique({
+            where: { guildId: interaction.guildId as string }
+        }).then(data => data?.defaultVolume) || client.defaultVolume
+
         const player = client.lavalink.getPlayer(interaction.guildId as string) || client.lavalink.createPlayer({
             guildId: interaction.guildId as string,
             voiceChannelId: voice.channelId as string,
             textChannelId: interaction.channelId as string,
             selfDeaf: false,
             selfMute: false,
-            volume: client.defaultVolume
+            volume: volume
         })
 
         if (!player.connected)

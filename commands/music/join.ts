@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, GuildMember, InteractionEditReplyOptions, SlashCommandBuilder, VoiceChannel } from 'discord.js'
 import { CavenBot } from '../../types/types.js'
+import prisma from '../../utils/prisma.js'
 
 export default {
     data: new SlashCommandBuilder().setName('join').setDescription('Joins the voice channel').setDMPermission(false),
@@ -16,13 +17,17 @@ export default {
         if (!voice.channel.joinable || !(voice.channel as VoiceChannel).speakable)
             return interaction.editReply({ content: 'I cannot join your voice channel!', ephemeral: true } as InteractionEditReplyOptions)
 
+        const volume = await prisma.musicsettings.findUnique({
+            where: { guildId: guildId }
+        }).then(data => data?.defaultVolume) || client.defaultVolume
+
         let player = client.lavalink.getPlayer(guildId) || client.lavalink.createPlayer({
             guildId: guildId,
             voiceChannelId: voice.channelId as string,
             textChannelId: interaction.channelId as string,
             selfDeaf: false,
             selfMute: false,
-            volume: client.defaultVolume
+            volume: volume
         })
 
         if (player.voiceChannelId && player.connected)

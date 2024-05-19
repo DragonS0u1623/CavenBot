@@ -10,15 +10,16 @@ datasource db {
 model admins {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   audits          String
-  guildId         String
+  guildId         String @unique
   welcome         String
   welcome_message String
 }
 
 model musicsettings {
   id                   String  @id @default(auto()) @map("_id") @db.ObjectId
-  guildId              String
+  guildId              String  @unique
   requesterNotInVCSkip Boolean
+  defaultVolume        Int
 }
 
 type Reminder {
@@ -31,11 +32,12 @@ model reminders {
   guildId   String
   userId    String
   reminders Reminder[]
+  @@unique([guildId, userId])
 }
 
 model serversettings {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   audits   Boolean
-  guildId  String
+  guildId  String  @unique
   welcome  Boolean
 }

@@ -1,11 +1,11 @@
-import { ChannelType, Colors, EmbedBuilder, Events, GuildBan } from 'discord.js'
+import { ChannelType, Client, Colors, EmbedBuilder, Events, GuildBan } from 'discord.js'
 import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 import prisma from '../../utils/prisma.js'
 
 export default {
     name: Events.GuildBanRemove,
     once: false,
-	async execute(ban: GuildBan) {
+	async execute(client: Client,ban: GuildBan) {
         const { guild } = ban
         const serverSettings = await prisma.serversettings.findUnique({ 
             where: { guildId: guild.id } 

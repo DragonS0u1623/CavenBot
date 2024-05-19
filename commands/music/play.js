@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js')
+const prisma = require('../../utils/prisma')
 
 module.exports = {
     data: new SlashCommandBuilder().setName('play').setDescription('Plays a song with the given search term or URL')
@@ -13,7 +14,6 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply()
 
-        const client = interaction.client
         const { voice } = interaction.member
 
         if (!voice.channel)
@@ -25,13 +25,17 @@ module.exports = {
         let search = interaction.options.getString('search', true)
         const source = interaction.options.getString('source')
 
-        const player = client.lavalink.getPlayer(interaction.guildId) || client.lavalink.createPlayer({
+        const volume = await prisma.musicsettings.findUnique({
+            where: { guildId: interaction.guildId }
+        }).then(data => data?.defaultVolume) || interaction.client.defaultVolume
+
+        const player = interaction.client.lavalink.getPlayer(interaction.guildId) || interaction.client.lavalink.createPlayer({
             guildId: interaction.guildId,
             voiceChannelId: voice.channelId,
             textChannelId: interaction.channelId,
             selfDeaf: false,
             selfMute: false,
-            volume: client.defaultVolume
+            volume: volume
         })
 
         if (!player.connected)

@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js')
+const prisma = require('../../utils/prisma')
 
 module.exports = {
     data: new SlashCommandBuilder().setName('join').setDescription('Joins the voice channel').setDMPermission(false),
@@ -6,7 +7,6 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true })
 
         const { voice } = interaction.member
-        const client = interaction.client
         const guildId = interaction.guildId
 
         if (!voice.channel)
@@ -15,13 +15,17 @@ module.exports = {
         if (!voice.channel.joinable || !voice.channel.speakable)
             return interaction.editReply({ content: 'I cannot join your voice channel!', ephemeral: true })
 
-        let player = client.lavalink.getPlayer(guildId) || client.lavalink.createPlayer({
+        const volume = await prisma.musicsettings.findUnique({
+            where: { guildId: guildId }
+        }).then(data => data?.defaultVolume) || interaction.client.defaultVolume
+
+        let player = interaction.client.lavalink.getPlayer(guildId) || interaction.client.lavalink.createPlayer({
             guildId: guildId,
             voiceChannelId: voice.channelId,
             textChannelId: interaction.channelId,
             selfDeaf: false,
             selfMute: false,
-            volume: client.defaultVolume
+            volume: volume
         })
 
         if (player.voiceChannelId && player.connected)

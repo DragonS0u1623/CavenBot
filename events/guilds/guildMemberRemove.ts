@@ -1,11 +1,11 @@
-import { ChannelType, Colors, EmbedBuilder, Events, GuildMember } from 'discord.js'
+import { ChannelType, Client, Colors, EmbedBuilder, Events, GuildMember } from 'discord.js'
 import { FOOTER, OWNERPFP } from '../../utils/statics.js'
 import prisma from '../../utils/prisma.js'
 
 export default {
     name: Events.GuildMemberRemove,
     once: false,
-	async execute(member: GuildMember) {
+	async execute(client: Client, member: GuildMember) {
         const { guild } = member
         const serverSettings = await prisma.serversettings.findUnique({
             where: { guildId: guild.id }

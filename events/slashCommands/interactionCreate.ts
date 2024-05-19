@@ -1,14 +1,14 @@
-import { BaseInteraction, Events } from 'discord.js'
+import { BaseInteraction, Client, Events } from 'discord.js'
 import { CavenBot } from '../../types/types.js'
 
 export default {
 	name: Events.InteractionCreate,
 	once: false,
-	async execute(client, interaction: BaseInteraction) {
+	async execute(client: Client, interaction: BaseInteraction) {
 		console.log(interaction)
 		if (!interaction.isChatInputCommand()) return
 
-		const command = client.commands.get(interaction.commandName)
+		const command = (client as CavenBot).commands.get(interaction.commandName)
 
 		if (!command) return
 

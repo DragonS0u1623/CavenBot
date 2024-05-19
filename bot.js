@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js'
 const utils = require('./utils/utils')
 const { BOTID } = require('./utils/statics')
 const { LavalinkManager } = require('lavalink-client')
+const prisma = require('./utils/prisma')
 
 const intents = [
     GatewayIntentBits.DirectMessages,
@@ -26,7 +27,7 @@ const client = new Client({
 client.commands = new Collection()
 client.events = new Collection()
 
-client.defaultVolume = 100
+client.defaultVolume = 50
 client.lavalink = new LavalinkManager({
     nodes: [
         {
@@ -48,7 +49,7 @@ client.lavalink = new LavalinkManager({
             autoReconnect: false
         },
         onEmptyQueue: {
-            destroyAfterMs: 30_000
+            destroyAfterMs: 30_0000
         }
     },
     queueOptions: {
@@ -64,10 +65,37 @@ client.lavalink.on('trackStart', (player, track) => {
     channel.send(`Now playing: ${track.info.title} by ${track.info.author}`)
 })
 
-client.lavalink.on('trackEnd', (player, track, reason) => {
+client.lavalink.on('trackEnd', async (player, track, payload) => {
     const channel = client.guilds.cache.find(guild => guild.id === player.guildId)?.channels.cache.find(channel => channel.id === player.textChannelId)
 
-    channel.send(`Song ended`)
+    const shouldSkip = await prisma.musicsettings.findUnique({
+        where: {
+            guildId: player.guildId
+        }
+    }).then(data => data?.requesterNotInVCSkip)
+
+    switch (payload.reason) {
+        case 'cleanup':
+            break
+        case 'finished':
+            if (player.queue.tracks.length === 0) return
+            if ((player.queue.tracks[0].requester.voice.channelId !== player.voiceChannelId) && shouldSkip) {
+                player.skip()
+                return channel.send('Requester not in voice channel. Skipping song.')
+            }
+            break
+        case 'loadFailed':
+            channel.send(`Failed to load ${track.info.title}`)
+            break
+        case 'replaced':
+            channel.send('Song ended')
+            break
+        case 'stopped':
+            break
+        default:
+            break
+    }
+
 })
 
 client.lavalink.on('queueEnd', player => {

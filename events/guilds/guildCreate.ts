@@ -1,12 +1,13 @@
-import { Events, Guild } from 'discord.js'
+import { Client, Events, Guild } from 'discord.js'
 import { BOTID } from '../../utils/statics.js'
 import axios from 'axios'
 import prisma from '../../utils/prisma.js'
+import { CavenBot } from '../../types/types.js'
 
 export default {
 	name: Events.GuildCreate,
 	once: false,
-	async execute(guild: Guild) {
+	async execute(client: Client, guild: Guild) {
 		await prisma.admins.create({
 			data: {
 				guildId: guild.id,
@@ -20,6 +21,13 @@ export default {
 				guildId: guild.id,
 				welcome: false,
 				audits: false
+			}
+		})
+		await prisma.musicsettings.create({
+			data: {
+				guildId: guild.id,
+				requesterNotInVCSkip: false,
+				defaultVolume: (client as CavenBot).defaultVolume
 			}
 		})
 
