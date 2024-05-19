@@ -1,4 +1,4 @@
-const { BOTID } = require('./../utils/statics')
+const { BOTID, HOMESERVERID } = require('./../utils/statics')
 const path = require('path')
 const { readdirSync } = require('fs')
 const { REST, Routes } = require('discord.js')
