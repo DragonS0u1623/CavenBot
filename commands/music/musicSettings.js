@@ -3,8 +3,8 @@ const prisma = require('../../utils/prisma')
 
 module.exports = {
     data: new SlashCommandBuilder().setName('musicsettings').setDescription('Change the music settings for the server').setDMPermission(false)
-        .addSubcommand(subcommand => subcommand.setName('requesterNotInVCSkip').setDescription('Toggle whether to skip the song if the requester is not in the voice channel'))
-        .addSubcommand(subcommand => subcommand.setName('defaultVolume').setDescription('Set the default volume for the bot')
+        .addSubcommand(subcommand => subcommand.setName('requesternotinvcskip').setDescription('Toggle whether to skip the song if the requester is not in the voice channel'))
+        .addSubcommand(subcommand => subcommand.setName('defaultvolume').setDescription('Set the default volume for the bot')
             .addIntegerOption(option => option.setName('volume').setDescription('The volume to set').setRequired(true))),
     async execute(interaction) {
         await interaction.deferReply()
