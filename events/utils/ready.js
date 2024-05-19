@@ -1,5 +1,5 @@
 const { Events } = require('discord.js')
-const { updateRegisteredCommands } = require('../../utils/utils')
+const { updateRegisteredCommands, updateRegisteredTestCommands } = require('../../utils/utils')
 
 module.exports = {
     name: Events.ClientReady,
@@ -9,6 +9,7 @@ module.exports = {
         
         console.log(`Logged in as ${client.user.tag}`)
         updateRegisteredCommands(client)
+        updateRegisteredTestCommands(client)
         await client.lavalink.init({ ...client.user })
     }
 }
